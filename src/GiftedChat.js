@@ -5,10 +5,10 @@ import {
   Platform,
   StyleSheet,
   View,
+  Keyboard,
 } from 'react-native';
 
 import ActionSheet from '@exponent/react-native-action-sheet';
-import dismissKeyboard from 'react-native-dismiss-keyboard';
 import moment from 'moment/min/moment-with-locales.min';
 
 import * as utils from './utils';
@@ -267,6 +267,7 @@ class GiftedChat extends React.Component {
 
   onTouchStart() {
     this._touchStarted = true;
+    Keyboard.dismiss();
   }
 
   onTouchMove() {
@@ -276,7 +277,7 @@ class GiftedChat extends React.Component {
   // handle Tap event to dismiss keyboard
   onTouchEnd() {
     if (this._touchStarted === true) {
-      dismissKeyboard();
+      Keyboard.dismiss();
     }
     this._touchStarted = false;
   }
